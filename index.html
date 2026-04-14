@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Fotos</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Álbum del Mundo">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+
+    <link rel="apple-touch-icon" href="assets/icons/apple-icon-180.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/icons/apple-icon-152.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="assets/icons/apple-icon-167.png">
+
+    <link rel="apple-touch-startup-image" href="assets/icons/splash-1170x2532.png" media="(device-width: 390px) and (device-height: 844px)">
+    <link rel="apple-touch-startup-image" href="assets/icons/splash-1284x2778.png" media="(device-width: 428px) and (device-height: 926px)">
+    <link rel="apple-touch-startup-image" href="assets/icons/splash-828x1792.png" media="(device-width: 414px) and (device-height: 896px)">
+    <link rel="apple-touch-startup-image" href="assets/icons/splash-1125x2436.png" media="(device-width: 375px) and (device-height: 812px)">
+    <link rel="apple-touch-startup-image" href="assets/icons/splash-750x1334.png" media="(device-width: 375px) and (device-height: 667px)">
+</head>
+
+<body>
+
+    <div id="app">
+
+        <section id="pantalla-menu" class="pantalla visible">
+            <h1>Álbum del mundo</h1>
+
+            <button class="btn" id="btn-ir-añadir">Añadir nueva foto</button>
+            <button class="btn" id="btn-ir-mapa">Ver fotos en el mapa</button>
+            <button class="btn" id="btn-ver-galeria">Ver todas las fotos</button>
+
+            <div id="menu-imagen-container">
+                <img id="menu-imagen" src="assets/fondo.jpg" alt="Imagen menú">
+            </div>
+        </section>
+
+        <section id="pantalla-añadir" class="pantalla">
+            <h2>Añadir nueva imagen</h2>
+
+            <label class="label">Seleccionar fotos</label>
+            <input type="file" id="input-fotos" multiple accept="image/*">
+
+            <label class="label">País</label>
+            <select id="select-pais"></select>
+
+            <label class="label">Ciudad</label>
+            <select id="select-ciudad"></select>
+
+            <button class="btn" id="btn-guardar-fotos">Guardar</button>
+            <button class="btn-secundario" id="btn-volver-menu-1">Volver al menú</button>
+            <button class="btn-secundario btn-exportar" id="btn-exportar-json">Exportar JSON</button>
+        </section>
+
+        <section id="pantalla-mapa" class="pantalla">
+            <div id="mapa"></div>
+            <button id="btn-volver-menu-2" class="btn-flotante">Volver</button>
+        </section>
+
+        <div id="popup-fotos" class="popup-oculto">
+            <div class="popup-contenido">
+                <span id="cerrar-popup" class="cerrar">&times;</span>
+                <img id="popup-imagen" src="" alt="Foto">
+
+                <div class="controles">
+                    <button id="foto-anterior" class="control">&lt;</button>
+                    <button id="foto-siguiente" class="control">&gt;</button>
+                    <button id="btn-eliminar-foto" class="btn-eliminar">Eliminar</button>
+                </div>
+            </div>
+        </div>
+
+        <section id="pantalla-galeria" class="pantalla">
+            <h2>Galería de fotos</h2>
+
+            <div id="galeria-fotos" class="galeria-grid"></div>
+
+            <button id="btn-volver-menu-galeria" class="btn-flotante">Volver</button>
+        </section>
+
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+
+    <!-- ORDEN CORRECTO -->
+    <!-- Primero las dependencias base -->
+    <script type="module" src="js/supabase.js"></script>
+    <script type="module" src="js/db.js"></script>
+    <script type="module" src="js/ubicaciones.js"></script>
+
+    <!-- Luego módulos que dependen de los anteriores -->
+    <script type="module" src="js/fotos.js"></script>
+    <script type="module" src="js/mapa.js"></script>
+
+    <!-- Luego la UI que usa todo lo anterior -->
+    <script type="module" src="js/ui.js"></script>
+
+    <!-- Por último app.js -->
+    <script type="module" src="js/app.js"></script>
+
+    <script>
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("service-worker.js");
+    }
+    </script>
+
+</body>
+
+<script>
+    console.log("🔥 HTML cargado correctamente");
+</script>
+
+</html>
