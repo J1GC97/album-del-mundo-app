@@ -1,0 +1,348 @@
+/* Tipografía general */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background: #ffffff;
+    color: #333;
+    overflow: hidden; /* opcional */
+    height: 100%;
+}
+
+/* Contenedor de pantallas */
+.pantalla {
+    position: absolute;   /* ← CLAVE */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;         /* ← CLAVE */
+    display: none;
+    padding: 40px;
+    box-sizing: border-box;
+    background: white;    /* ← evita transparencias */
+    text-align: center;
+}
+
+.pantalla.visible {
+    display: block;
+}
+
+/* Títulos generales */
+h1, h2 {
+    font-weight: 300;
+    margin-bottom: 40px;
+}
+
+/* ⭐ TÍTULO DEL MENÚ PRINCIPAL */
+#pantalla-menu h1 {
+    font-size: 48px;          /* grande */
+    font-weight: 800;         /* negrita fuerte */
+    text-transform: uppercase; /* mayúsculas */
+    letter-spacing: 2px;      /* separación elegante */
+    margin-bottom: 50px;      /* más espacio con los botones */
+}
+
+/* Botones estilo Apple */
+.btn {
+    background: #f2f2f2;
+    border: 1px solid #ddd;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background: #e6e6e6;
+}
+
+/* ⭐ BOTONES DEL MENÚ PRINCIPAL */
+#pantalla-menu .btn {
+    font-size: 20px;        /* texto más grande */
+    padding: 18px 28px;     /* más robustos */
+    font-weight: 600;       /* más presencia */
+    border-radius: 12px;    /* más modernos */
+}
+
+#pantalla-menu .btn:hover {
+    transform: scale(1.03);
+    background: #eaeaea;
+}
+
+.btn-secundario {
+    background: #ffffff;
+    border: 1px solid #ccc;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    text-align: left;
+}
+
+/* Inputs */
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+#pantalla-mapa {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* ← evita scroll */
+    padding: 0;
+    margin: 0;
+}
+
+/* Mapa */
+#mapa {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* Botón flotante */
+.btn-flotante {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Popup de fotos */
+#popup-fotos {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999; /* ← CLAVE */
+}
+
+.popup-oculto {
+    display: none;
+}
+
+.popup-contenido {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#popup-imagen {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.cerrar {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 32px;
+    color: white;
+    cursor: pointer;
+    z-index: 100000;
+}
+
+.controles {
+    margin-top: 10px;
+}
+
+.control {
+    background: #f2f2f2;
+    border: 1px solid #ddd;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#popup-fotos.popup-oculto {
+    display: none !important;
+}
+
+#btn-volver-menu-2 {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 99999;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(6px);
+    padding: 10px 18px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#btn-volver-menu-2:hover {
+    background: white;
+    transform: scale(1.03);
+}
+
+/* Contenedor de la imagen del menú */
+#menu-imagen-container {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    overflow: hidden;
+}
+
+#menu-imagen {
+    height: 100%;        /* se ajusta al alto */
+    width: auto;         /* mantiene proporción */
+    object-fit: contain;
+}
+
+/* Pantalla menú como layout vertical */
+#pantalla-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-exportar {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+}
+
+/* Contenedor del popup */
+.popup-contenido {
+    position: relative;
+}
+
+/* Imagen del popup */
+#popup-imagen {
+    width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    display: block;
+}
+
+/* Flechas integradas dentro de la imagen */
+.control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.45); /* Fondo más oscuro */
+    color: rgba(255, 255, 255, 0.6); /* Blanco con transparencia */
+    border: none;
+    font-size: 25px;
+    padding: 14px 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.2s, transform 0.15s;
+}
+
+/* Hover */
+.control:hover {
+    background: rgba(0, 0, 0, 0.65); /* Más oscuro al pasar el ratón */
+    transform: translateY(-50%) scale(1.08);
+}
+
+/* Flecha izquierda */
+#foto-anterior {
+    left: 8px;
+}
+
+/* Flecha derecha */
+#foto-siguiente {
+    right: 8px;
+}
+
+/* Botón eliminar elegante */
+.btn-eliminar {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: rgba(212, 212, 212, 0.65);
+    color: #000000;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+/* Hover */
+.btn-eliminar:hover {
+    background: rgba(185, 185, 185, 0.329);
+    border-color: rgba(0, 0, 0, 0.438);
+    transform: translateY(-1px);
+}
+
+/* ============================
+   GALERÍA DE FOTOS
+   ============================ */
+
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    padding: 10px;
+}
+
+.galeria-grid img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.galeria-grid img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .galeria-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .galeria-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Pantalla galería con scroll vertical */
+#pantalla-galeria {
+    height: 100vh;
+    overflow-y: auto;
+    padding-bottom: 80px; /* espacio para el botón flotante */
+}
